@@ -1,0 +1,15 @@
+version: '3'
+services:
+  try_nats:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3039:3039"
+    volumes:
+      - "./logs:/var/log/"
+  nats_streaming:
+    image: library/nats
+    ports:
+      - "4222:4222"
+      - "8222:8222"
